@@ -1,15 +1,7 @@
-
-#url="http://bit.ly/get_usgs_gageR"
-#source(url)
-library(ggplot2)
-library(maps)
-library(mapdata)
+pacman::p_load(ggplot2,maps,mapdata)
 get_usgs_gage=function(flowgage_id,begin_date="1979-01-01",end_date="2013-01-01"){
-  #
-  # Grabs USGS stream flow data for 1979 to present... to align with CFSR datasets.
-  #
   url = paste("https://waterdata.usgs.gov/nwis/inventory?search_site_no=", flowgage_id, "&search_site_no_match_type=exact&sort_key=site_no&group_key=NONE&format=sitefile_output&sitefile_output_format=rdb&column_name=station_nm&column_name=site_tp_cd&column_name=dec_lat_va&column_name=dec_long_va&column_name=alt_va&column_name=drain_area_va&column_name=contrib_drain_area_va&column_name=rt_bol&list_of_search_criteria=search_site_no",sep="")
-  
+ 
   gage_tsv=readLines(url)
   gage_tsv=gage_tsv[grep("^#",gage_tsv,invert=T)][c(1,3)]
   tempdf=read.delim(text=gage_tsv,sep="\t",header=T,colClasses = c("character", "character", "numeric", "numeric", "character", "character", "numeric", "numeric", "character", "numeric"))
@@ -76,11 +68,8 @@ gids=c("01555500",
        "02317797")
 
 CEAPmap_fun=function(hucs,gids){
-
 WBHUC10=list()
-for(j in hucs){
-  
-  
+for(j in hucs){  
   url=paste0("https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/HU8/HighResolution/Shape/NHD_H_",j,"_HU8_Shape.zip")
   download.file(url,paste0("NHD_H_",j,"_HU8_Shape.zip"))
   unzip(paste0("NHD_H_",j,"_HU8_Shape.zip"),exdir=j)
@@ -91,7 +80,6 @@ for(j in hucs){
 ##################################################################################################
 ######USGS LAT/LON
 ##################################################################################################
-
 flowgages=list()
 for (flowgage_id in gids){
   print(flowgage_id)
