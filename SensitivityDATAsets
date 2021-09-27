@@ -1,0 +1,112 @@
+#USGS01555500-EastMahantangoCreeknearDalmatia-PA
+unlink("/dev/shm/rojakaveh/", recursive = TRUE)
+dir.create("~/src")
+setwd("~/src")
+system("svn checkout svn://scm.r-forge.r-project.org/svnroot/ecohydrology/")
+install.packages("~/src/ecohydrology/pkg/SWATmodel/",repos = NULL)
+dir.create("/dev/shm/rojakaveh")
+##############
+library(SWATmodel)
+gids=c("01555500",
+       "01491000",
+       "03228300",
+       "04180000",
+       "07282075",
+       "07040450",
+       "05506800",
+       "05506100",
+       "05451210",
+       "05471000",
+       "08100500",
+       "07327442",
+       "07325840",
+       "13090000",
+       "02317797",
+       "04282650"
+)
+###################idw
+gids=c("01555500",
+       "01491000",
+       "03228300",
+       "04180000"
+)
+
+
+#####################
+gids=c("07325840",
+       "13090000")
+#i="01555500"
+for (i in gids){
+  flowgage_id=i #Little Otter Creek at Ferrisburg, VT.
+  flowgage=get_usgs_gage(flowgage_id,begin_date = "2010-01-01",end_date
+                         = "2022-01-01")
+  flowgage$flowdata$Qm3ps= flowgage$flowdata$flow/24/3600 #m3/s
+  setwd("/dev/shm/rojakaveh")
+  ######################################
+  dir.create(paste0("USGS",i,"SensiIDW"))
+  file.copy(list.files(paste0("~/CEAPwatersheds/IDW-USGS",i,""),full.names = TRUE,recursive = TRUE),paste0("/dev/shm/rojakaveh/USGS",i,"SensiIDW/"),recursive = TRUE)
+  setwd(paste0("/dev/shm/rojakaveh/USGS",i,"SensiIDW/"))
+  ##################################
+  source("https://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/SWATmodel/R/readSWAT.R?root=ecohydrology")
+  save(readSWAT,file="readSWAT.R")
+  source("https://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/EcoHydRology/R/setup_swatcal.R?root=ecohydrology")
+  source("https://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/EcoHydRology/R/swat_objective_function_rch.R?root=ecohydrology")
+  
+  
+  change_params=""
+  rm(change_params)
+  load(paste(path.package("EcoHydRology"), "data/change_params.rda", sep = "/"))
+  calib_range=c("1999-12-31","2021-12-31")
+  params_select=c(1,2,3,4,5,6,7,8,9,10,11,14,19,21,22,23,24,32,33)
+  calib_params=change_params[params_select,]
+  #calib_params$current[2]=0.5
+  calib_params$min[9]=0
+  calib_params$min[10]=0
+  calib_params$current[9]=2.5
+  calib_params$current[10]=2.5
+  calib_params$min[11]=0.01
+  calib_params$max[11]=1
+  calib_params$min[13]=40
+  calib_params$max[13]=95
+  calib_params$min[14]=0.3
+  calib_params$max[14]=3
+  calib_params$min[15]=0.3
+  calib_params$max[15]=3
+  calib_params$min[16]=0.3
+  calib_params$max[16]=3
+  calib_params$min[17]=0.3
+  calib_params$max[17]=3
+  calib_params$max[2]=2
+  calib_params$max[3]=600
+  calib_params$max[4]=0.3
+  calib_params$min[2]=0
+  calib_params$max[2]=1
+  calib_params$current[2]=0.5
+  calib_params[c(9,10),4]=0
+  calib_params[c(9,10),6]=2.5
+  calib_params[11,5]=1
+  calib_params[11,6]=.5
+  calib_params[1:7]
+  setup_swatcal(calib_params)
+  rch=3
+  x=calib_params$current
+  #swat_objective_function_rch(x,calib_range,calib_params,flowgage,rch,save_results=F)
+  #####################################################################
+  #################################
+  #Loop to have 10datasets of outdeoptim
+  dir.create(paste0("~/CEAPwatersheds/SENIDW-USGS",i,""))
+  for (calitts in 1:5){
+    print(calitts)
+    set.seed(calitts)
+    outDEoptim<-DEoptim(swat_objective_function_rch,calib_params$min,calib_params$max,
+                        DEoptim.control(strategy = 6,NP = 16,itermax=300,parallelType = 1,
+                                        packages = c("SWATmodel")),calib_range,calib_params,flowgage,rch)
+    x=outDEoptim$optim$bestmem
+    filename=format(Sys.time(), "%Y%m%d%H%M_outDEoptim.RData")
+    assign(filename,outDEoptim)
+    save(outDEoptim,file=format(Sys.time(), paste0("~/CEAPwatersheds/SENIDW-USGS",i,"/%Y%m%d%H%M_outDEoptim.RData")))
+  }
+}
+##################################################
+#####so now we have 10 datasets 5 for 2010-2021 and 5 for 2015-2021
+#####################################################
