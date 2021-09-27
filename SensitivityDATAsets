@@ -107,6 +107,7 @@ for (i in gids){
     save(outDEoptim,file=format(Sys.time(), paste0("~/CEAPwatersheds/SENIDW-USGS",i,"/%Y%m%d%H%M_outDEoptim.RData")))
   }
 }
+
 ##################################################
 #####so now we have 10 datasets 5 for 2010-2021 and 5 for 2015-2021
 #####################################################
