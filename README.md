@@ -53,9 +53,15 @@ In order to run this script in `RStudio`:
         file.edit("multipleSWAT_init_calib.R")
 
 ##### Barplot.R
-This script genrates the stacked barplot of the number and type of GHCN stations used to obtain and fill in missing precipitation data of 21 USGS gages. Each bar represents the numbers and types of precipitation GHCN stations, including CoCoRaHS (purple), COOP (air force blue), SNOTEL (aquamarine), and WBAN (yellow) for a basin with the associated number from Table 1. The basins are grouped based on climate classification, including Dfa, Dfb, BSk, Cfa, Csa. The black lines that range from 0-110 show the y-axis scales (number of GHCN stations). For runing the code the excel files containing the data is provided in this repository as `data.xlsx`
+This script genrates the stacked barplot of the number and type of GHCN stations used to obtain and fill in missing precipitation data of 21 USGS gages. Each bar represents the numbers and types of precipitation GHCN stations, including CoCoRaHS (purple), COOP (air force blue), SNOTEL (aquamarine), and WBAN (yellow) for a basin with the associated number from Table 1. The basins are grouped based on climate classification, including Dfa, Dfb, BSk, Cfa, Csa. The black lines that range from 0-110 show the y-axis scales (number of GHCN stations). For runing the code the excel file containing the data is provided in this repository as `data.xlsx`
 
         download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/Barplot.R","Barplot.R")
         file.edit("Barplot.R")
+        
+##### OnewayANOVA.R
+This script contains R code for one-way ANOVA test. One-way analysis of variance (ANOVA) test was used individually for each of the statistical measures (NSE, RSR, PABIAS) obtained from three estimation methods for 21 watersheds to identify if there are any statistically significant differences between the means of estimation methods (three independent groups including closest, IDW, and IDEW with 21 samples (values of a statistical metric) per each group). Note that the significance level is α = 0.1 as recommended by (Kim & Choi, 2021) for small sample sizes. For runing the code the excel files containing the data are provided in this repository as `NSE_ANOVA.xlsx`, `RSR_ANOVA.xlsx`, and `PABIAS_ANOVA.xlsx`.
+
+        download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/OnewayANOVA.R","OnewayANOVA.R")
+        file.edit("OnewayANOVA.R")
         
 
