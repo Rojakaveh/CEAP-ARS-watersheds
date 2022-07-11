@@ -70,4 +70,5 @@ This script generates a boxplot. The boxplot of NSE (a), RSR (b), and PABIAS (c)
         download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/StatMeasureBoxplot.R","StatMeasureBoxplot.R")
         file.edit("StatMeasureBoxplot.R")
 
-
+# License
+Please see the LICENSE.md file for license information.
