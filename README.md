@@ -1,3 +1,4 @@
 Using Combined and Complete  Global Historical Climatology Network (GHCN) Data for Hydrological Models
 =================
-This study evaluates whether the combined datasets of GHCN, including the addition of higher-density but perhaps lower-quality citizen science weather data, combined with previously published methods to estimate missing weather data from multiple weather stations can increase model performance. To test this, we use the SWAT model for 21 United States Department of Agriculture (USDA)-Agricultural Research Service (ARS)-Conservation Effects Assessment Project (CEAP) watersheds across five climate regions in the United States and compare the model predicted streamflow to observed data.
+
+Evaluation of combined datasets of GHCN, including the addition of higher-density but perhaps lower-quality citizen science weather data, combined with previously published methods to estimate missing weather data from multiple weather stations on hydrological model performance.
