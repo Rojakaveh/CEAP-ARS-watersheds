@@ -1,4 +1,4 @@
-
+source("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/get_usgs_gage")
 ################################################HUCS IN WBHUC10
 hucs=c("02050301",
        "02060005",
@@ -23,7 +23,7 @@ hucs=c("02050301",
        "18030007"
 )
 
-
+#################################usgs gage ID
 gids=c("01555500",
        "01491000",
        "03228300",
