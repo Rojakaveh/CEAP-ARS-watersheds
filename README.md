@@ -51,3 +51,11 @@ In order to run this script in `RStudio`:
 
         download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/multipleSWAT_init_calib.R","multipleSWAT_init_calib.R")
         file.edit("multipleSWAT_init_calib.R")
+
+##### Barplot.R
+This script genrates the stacked barplot of the number and type of GHCN stations used to obtain and fill in missing precipitation data of 21 USGS gages. Each bar represents the numbers and types of precipitation GHCN stations, including CoCoRaHS (purple), COOP (air force blue), SNOTEL (aquamarine), and WBAN (yellow) for a basin with the associated number from Table 1. The basins are grouped based on climate classification, including Dfa, Dfb, BSk, Cfa, Csa. The black lines that range from 0-110 show the y-axis scales (number of GHCN stations). For runing the code the excel files containing the data is provided in this repository as `data.xlsx`
+
+        download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/Barplot.R","Barplot.R")
+        file.edit("Barplot.R")
+        
+
