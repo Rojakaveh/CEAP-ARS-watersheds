@@ -39,6 +39,11 @@ This repository contains R codes for a project called **Using Combined and Compl
         if (!require("pacman")) install.packages("pacman")
         pacman::p_load(rnoaa,EcoHydRology,SWATmodel,nhdplusTools,sf,dplyr,ggplot2,moments,tidyverse,viridis,egg)
 
+##### CEAPMAPFUNCTNEW.R
+This script automatically generates a map representing the location of CEAP watersheds and their climate classification.
+        download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/CEAPMAPFUNCTNEW.R","CEAPMAPFUNCTNEW.R")
+        file.edit("CEAPMAPFUNCTNEW.R")
+
 ##### multipleSWAT_init_calib.R
 This script automatically initializes three SWAT models for 21 CEAP watersheds with three missing weather estimation methods including closest, IDW, and IDEW, using the SWATmodel R package. Each initialization folder is named with the estimation method followed by the USGS gage ID. After model initialization in each of the 21 ARS-CEAP watersheds, 19 parameters, previously shown as important SWAT streamflow parameters, will be calibrated using the DEoptim algorithm. Finally, the data frame containing the calibrated parameters and the optimum Nash-Sutcliffe efficiency (NSE) will be generated for each SWAT model.  
 In order to run this script in `RStudio`:
