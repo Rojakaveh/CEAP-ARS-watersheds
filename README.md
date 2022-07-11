@@ -12,3 +12,6 @@ See the following links for more information on  `R` and `RStudio` download and 
 There is also a cloud-based `RStudio` sever at the following location:
 
 - Cloud-based `RStudio` server: <https://rstudio.cloud/>
+See the following links for more information on 'GHCN' data:
+
+- Global Historical Climatology Network daily (GHCNd): <https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily>
