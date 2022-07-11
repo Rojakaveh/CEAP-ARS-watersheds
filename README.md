@@ -44,4 +44,4 @@ This script automatically initializes three SWAT models for 21 CEAP watersheds w
 In order to run this script in `RStudio`:
 
         download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/multipleSWAT_init_calib.R","multipleSWAT_init_calib.R")
-        file.edit("SmultipleSWAT_init_calib.R")
+        file.edit("multipleSWAT_init_calib.R")
