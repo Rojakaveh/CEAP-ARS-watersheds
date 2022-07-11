@@ -16,3 +16,5 @@ There is also a cloud-based `RStudio` sever at the following location:
 See the following links for more information on 'GHCN' data:
 
 - Global Historical Climatology Network daily (GHCNd): <https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily>
+- Community Collaborative Rain, Hail, and Snow (CoCoRaHS): <https://www.cocorahs.org/>
+- Cooperative Observer Program (COOP):<https://www.weather.gov/coop/Overview>
