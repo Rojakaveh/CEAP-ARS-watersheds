@@ -35,3 +35,8 @@ This repository contains R codes for a project called **Using Combined and Compl
 •   tidyverse
 •   viridis
 •   egg
+
+        if (!require("pacman")) install.packages("pacman")
+        pacman::p_load(rnoaa,EcoHydRology,SWATmodel,nhdplusTools,sf,dplyr,ggplot2,moments,tidyverse,viridis,egg)
+
+
