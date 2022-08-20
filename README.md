@@ -1,4 +1,5 @@
-Benefits of Using Higher Density Lower Reliability  Weather Data from the Global Historical Climatology Network (GHCN) Monitors for Watershed Modelling
+Benefits of Using Higher Density Lower Reliability  Weather Data from the Global Historical Climatology Network (GHCN) Monitors for Watershed Modelling [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7013185.svg)](https://doi.org/10.5281/zenodo.7013185)
+
 =================
 
 Evaluation of combined datasets of GHCN, including the addition of higher-density but perhaps lower-quality citizen science weather data, combined with previously published methods to estimate missing weather data from multiple weather stations on hydrological model performance.
