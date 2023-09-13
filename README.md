@@ -71,5 +71,18 @@ This script generates a boxplot. The boxplot of NSE (a), RSR (b), and PABIAS (c)
         download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/StatMeasureBoxplot.R","StatMeasureBoxplot.R")
         file.edit("StatMeasureBoxplot.R")
 
+##### Bootstrap.R
+This script perfoms bootstap method for model evaluation:
+
+        download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/Bootstrap.R","Bootstrap.R")
+        file.edit("Bootstrap.R")
+
+##### TMWB.R
+This script initializes Thornthwaite-Mather models (TMWB) and then calibrate the models using DEoptim :
+
+        download.file("https://raw.githubusercontent.com/Rojakaveh/CEAP-ARS-watersheds/main/TMWB.R","TMWB.R")
+        file.edit("TMWB.R")
+
+
 # License
 Please see the LICENSE.md file for license information.
